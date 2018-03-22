@@ -1,7 +1,7 @@
 
 
 var svg = d3.select("svg"),
-    margin = {top: 20, right: 520, bottom: 180, left: 50},
+    margin = {top: 20, right: 520, bottom: 230, left: 50},
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom,
     g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -75,6 +75,9 @@ function dynastyInfo(selectedDynasty){
     }
     else if(selectedDynasty == "Western Han"){
         d3.select("#annotation_1").text("The Western Han Dynasty (206BC - 24AD) was regarded as the first unified and powerful empire in Chinese history.");
+    }
+    else if(selectedDynasty == "Xin Dynasty"){
+        d3.select("#annotation_1").text("Xin Dynasty(9 AD - 25 AD) marks the separation between the Western Han Dynasty (before Xin) and Eastern Han Dynasty (after Xin).");
     }
     else if(selectedDynasty == "Eastern Han"){
         d3.select("#annotation_1").text("Liu Xiu, a descendant of Western Han royalty defeated the usurper, thus establishing the Eastern Han(25 AD - 220 AD). ");
@@ -214,7 +217,7 @@ svg.append("text")
      g.append("circle").attr("cx", 102).attr("cy", 336  ).attr("r", 4).style("fill", "black").on("click", mouseClick_3);
 
     function mouseClick_3() {
-        d3.select("#annotation").text("In 9 AD, Wang Mang,who was a Han Dynasty official, usurped the throne from the Liu family and founded the Xin Dynasty, ruling 9–23 AD.The Han dynasty was restored by Liu family years after his overthrow. His rule marks the separation between the Western Han Dynasty (before Xin) and Eastern Han Dynasty (after Xin).");
+        d3.select("#annotation").text("In 9 AD, Wang Mang,who was a Han Dynasty official, usurped the throne from the Liu family and founded the Xin Dynasty, ruling 9–23 AD.The Han dynasty was restored by Liu family years after his overthrow.");
 }
     
    /* svg.append("circle").attr("cx", 218.02502234137623).attr("cy", 290.01603375527426).attr("r", 4).style("fill", "black").on("click", mouseClick_4);
@@ -382,7 +385,6 @@ function highlightGenerator(data, dynasty,x,y){
       .datum(highLightedData)
       .attr("d", area)
       .attr("fill", function(){
-        
             //no boolean var in js, use this statement to imitate a flip-flop
         return d3.schemeCategory20[highLightedData[0].color]
         })
